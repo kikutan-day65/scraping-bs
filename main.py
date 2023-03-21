@@ -12,8 +12,8 @@ page = requests.get(url)
 soup = BeautifulSoup(page.content, 'lxml')
 
 main_content = soup.find('main')
-
 titles = main_content.find_all('h2', class_='entry-title')
+authors = main_content.find_all('span', class_='entry-author-name')
 
-for title in titles:
-    print(title.text)
+title_list = [title.text for title in titles]
+author_list = [author.text for author in authors]
